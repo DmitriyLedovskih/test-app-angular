@@ -1,0 +1,32 @@
+<app-auth
+  title="Авторизация"
+  text="Ещё нет аккаунта?"
+  linkUrl="/register"
+  textLink="Зарегистрироваться"
+>
+  <form tuiForm="m" [formGroup]="form" class="form" (ngSubmit)="onSubmit()">
+    <tui-textfield>
+      <label tuiLabel>Почта</label>
+      <input type="email" tuiTextfield formControlName="email" email />
+    </tui-textfield>
+    <tui-error formControlName="email" [error]="[] | tuiFieldError | async" />
+    <tui-textfield>
+      <label tuiLabel>Пароль</label>
+      <input type="password" tuiTextfield formControlName="password" />
+    </tui-textfield>
+    <tui-error
+      formControlName="password"
+      [error]="[] | tuiFieldError | async"
+    />
+    <button
+      tuiButton
+      type="submit"
+      appearance="primary-destructive"
+      class="button"
+      [loading]="authService.isLoading"
+      [disabled]="!form.valid"
+    >
+      Зарегистрироваться
+    </button>
+  </form>
+</app-auth>

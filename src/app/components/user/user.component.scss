@@ -1,0 +1,42 @@
+:host {
+  min-width: 200px;
+  display: block;
+
+  .user {
+    width: 100%;
+    box-shadow: 0 20px 15px #a1a1a1, 0 -20px 15px #a1a1a1;
+    transition: all 0.4s ease;
+    padding: 0;
+
+    .link {
+      padding: 20px;
+    }
+
+    @media screen and (max-width: 520px) {
+      box-shadow: 0 10px 15px #a1a1a1, 0 -10px 15px #a1a1a1;
+    }
+
+    .avatar {
+      width: 100%;
+    }
+
+    .name {
+      font-size: 18px;
+      line-height: 24px;
+    }
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px #a1a1a1, 0 0 15px #a1a1a1;
+    }
+
+    .link {
+      display: flex;
+      justify-content: center;
+    }
+
+    .button {
+      border-radius: 0;
+    }
+  }
+}

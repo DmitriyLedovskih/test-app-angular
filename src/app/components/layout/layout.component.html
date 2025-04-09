@@ -1,0 +1,12 @@
+@if (isAuth) {
+<div class="container">
+  <app-header (logoutHeader)="logoutHeader()"></app-header>
+</div>
+}
+
+<div class="container">
+  <main class="content">
+    <ng-content></ng-content>
+    <router-outlet />
+  </main>
+</div>

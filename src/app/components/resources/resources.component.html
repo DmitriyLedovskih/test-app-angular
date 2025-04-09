@@ -1,0 +1,42 @@
+@if (resourceService.isLoading) {
+<app-loader></app-loader>
+} @else {<app-section
+  title="Всего ресурсов"
+  notFoundText="Ресурсов нет :("
+  [length]="resources.length"
+>
+  <table tuiTable [columns]="columns" class="table">
+    <thead>
+      <tr tuiThGroup>
+        <th tuiTh>ID</th>
+        <th tuiTh>Name</th>
+        <th tuiTh>Year</th>
+        <th tuiTh>Pantone Value</th>
+      </tr>
+    </thead>
+    <tbody tuiTbody>
+      @for (resource of resources; track resource.id) {
+      <tr tuiTr>
+        <td
+          *tuiCell="'id'"
+          tuiTd
+          [style.backgroundColor]="resource.color"
+          class="td"
+        >
+          {{ resource.id }}
+        </td>
+        <td *tuiCell="'name'" tuiTd class="td">
+          {{ resource.name }}
+        </td>
+        <td *tuiCell="'year'" tuiTd class="td">
+          {{ resource.year }}
+        </td>
+        <td *tuiCell="'pantone_value'" tuiTd class="td">
+          {{ resource.pantone_value }}
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</app-section>
+}

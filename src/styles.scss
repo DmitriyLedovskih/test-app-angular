@@ -1,0 +1,25 @@
+:root {
+  --main-link-color: #111;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  min-height: 100vh;
+}
+
+p {
+  font-size: 16px;
+  line-height: 21px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--main-link-color);
+}

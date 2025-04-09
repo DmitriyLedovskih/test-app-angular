@@ -1,0 +1,109 @@
+@if (usersService.isLoading) {
+<app-loader></app-loader>
+} @else {
+<app-section
+  [title]="user !== undefined ? 'ID пользователя' : undefined"
+  [length]="user !== undefined ? user.id : undefined"
+  notFoundText="Пользователь не найден"
+>
+  <div tuiBlockDetails class="block details">
+    <a
+      tuiButton
+      size="m"
+      appearance="flat"
+      iconStart="@tui.chevron-left"
+      class="button"
+      routerLink="/"
+    >
+      Вернутся назад
+    </a>
+    <tui-avatar
+      [src]="user?.avatar"
+      size="xxl"
+      [round]="false"
+      class="avatar"
+    />
+    <h3 tuiTitle class="subtitle">
+      {{ user?.first_name }} {{ user?.last_name }}
+    </h3>
+    <p tuiSubTitle class="text">
+      {{ user?.email }}
+    </p>
+    <div class="block">
+      <div class="buttons">
+        <p>Действие:</p>
+        <button
+          tuiButton
+          size="m"
+          appearance="accent"
+          iconStart="@tui.pencil"
+          class="button"
+          (click)="visibleForm()"
+        >
+          Редактировать
+        </button>
+      </div>
+      @if (isVisibleForm) {
+      <form tuiForm="m" [formGroup]="form" class="form" (ngSubmit)="onSubmit()">
+        <tui-textfield>
+          <label tuiLabel>Имя</label>
+          <input
+            type="text"
+            tuiTextfield
+            formControlName="first_name"
+            [ngModel]="user!.first_name"
+          />
+        </tui-textfield>
+        <tui-error
+          formControlName="first_name"
+          [error]="[] | tuiFieldError | async"
+        />
+        <tui-textfield>
+          <label tuiLabel>Фамилия</label>
+          <input
+            type="text"
+            tuiTextfield
+            formControlName="last_name"
+            [ngModel]="user!.last_name"
+          />
+        </tui-textfield>
+        <tui-error
+          formControlName="last_name"
+          [error]="[] | tuiFieldError | async"
+        />
+        <tui-textfield>
+          <label tuiLabel>Почта</label>
+          <input
+            type="email"
+            tuiTextfield
+            formControlName="email"
+            [ngModel]="user!.email"
+            email
+          />
+        </tui-textfield>
+        <tui-error
+          formControlName="email"
+          [error]="[] | tuiFieldError | async"
+        />
+        <tui-textfield>
+          <label tuiLabel>Аватар</label>
+          <input
+            type="url"
+            tuiTextfield
+            formControlName="avatar"
+            [ngModel]="user!.avatar"
+          />
+        </tui-textfield>
+        <tui-error
+          formControlName="avatar"
+          [error]="[] | tuiFieldError | async"
+        />
+        <button tuiButton type="submit" [disabled]="!form.valid" class="button">
+          Отправить
+        </button>
+      </form>
+      }
+    </div>
+  </div>
+</app-section>
+}

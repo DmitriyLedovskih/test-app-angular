@@ -1,0 +1,31 @@
+@if (!usersService.isLoading) {
+<app-section
+  title="Всего пользователей"
+  [length]="users.length"
+  notFoundText="Пользователей нет :("
+>
+  <ul class="row">
+    @if (screenWidth>=520) { @for (user of users; track user.id) {
+    <app-user [user]="user" (deleteUser)="deleteUser($event)"></app-user>
+    } } @else { @for (user of users.slice(0, mobileUserVisible); track user.id)
+    {
+    <app-user [user]="user"></app-user>
+    } }
+  </ul>
+  @if (screenWidth<=520) {
+  <button
+    tuiButton
+    appearance="primary"
+    type="button"
+    (click)="clickVisible()"
+    size="m"
+    class="button"
+  >
+    {{ mobileUserVisible === 2 ? "Показать" : "Скрыть" }} остальных
+    пользователей
+  </button>
+  }
+</app-section>
+} @else {
+<app-loader></app-loader>
+}

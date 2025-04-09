@@ -1,0 +1,10 @@
+<div tuiBlockDetails class="block">
+  <h1 tuiTitle="l" class="title">{{ title }}</h1>
+  <ng-content></ng-content>
+  <p tuiSubTitle>
+    {{ text }}
+    <a tuiLink [routerLink]="linkUrl">
+      {{ textLink }}
+    </a>
+  </p>
+</div>

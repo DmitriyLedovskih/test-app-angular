@@ -1,0 +1,26 @@
+@if (user) {
+<article tuiCardLarge tuiAppearance="floating" class="user">
+  <a
+    class="link"
+    [routerLink]="['/users/', user.id]"
+    routerLinkActive="active"
+    ariaCurrentWhenActive="page"
+  >
+    <tui-avatar-labeled class="avatar">
+      <tui-avatar [src]="user.avatar" size="xxl" />
+      <p class="name">{{ user.first_name }} {{ user.last_name }}</p>
+    </tui-avatar-labeled>
+  </a>
+  <button
+    tuiButton
+    size="m"
+    appearance="outline"
+    iconStart="@tui.trash"
+    [loading]="usersService.loadingState[user.id]"
+    (click)="delete(user.id)"
+    class="button"
+  >
+    Удалить
+  </button>
+</article>
+}

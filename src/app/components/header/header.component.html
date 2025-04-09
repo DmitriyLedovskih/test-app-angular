@@ -1,0 +1,6 @@
+@if(authService.isLoading){
+<app-loader></app-loader>
+} @else {
+{{ user.email }}
+<button tuiLink (click)="logout()">Выйти</button>
+}

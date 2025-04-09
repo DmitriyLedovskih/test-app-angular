@@ -1,0 +1,12 @@
+@if (title) {
+<h2 tuiTitle="l" class="title">
+  {{ title }}
+  @if (length) {
+  <span style="color: #f34141">{{ length }}</span>
+  }
+</h2>
+} @if (length) {
+<ng-content></ng-content>
+} @else {
+<app-not-found-text>{{ notFoundText }}</app-not-found-text
+>}

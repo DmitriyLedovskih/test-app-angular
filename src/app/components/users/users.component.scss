@@ -1,0 +1,23 @@
+:host {
+  margin-bottom: 50px;
+  display: block;
+
+  .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    width: 100%;
+
+    @media screen and (max-width: 520px) {
+      flex-direction: column;
+    }
+  }
+
+  .button {
+    @media screen and (max-width: 420px) {
+      font-size: 12px;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 50px;
+
+  @media screen and (max-width: 520px) {
+    gap: 20px;
+  }
+
+  .title {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+
+    @media screen and (max-width: 520px) {
+      font-size: 21px;
+    }
+  }
+}
