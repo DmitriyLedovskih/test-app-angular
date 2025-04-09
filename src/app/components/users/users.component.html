@@ -1,6 +1,6 @@
 @if (!usersService.isLoading) {
 <app-section
-  title="Всего пользователей"
+  [title]="users.length ? 'Всего пользователей' : ''"
   [length]="users.length"
   notFoundText="Пользователей нет :("
 >
@@ -9,7 +9,7 @@
     <app-user [user]="user" (deleteUser)="deleteUser($event)"></app-user>
     } } @else { @for (user of users.slice(0, mobileUserVisible); track user.id)
     {
-    <app-user [user]="user"></app-user>
+    <app-user [user]="user" (deleteUser)="deleteUser($event)"></app-user>
     } }
   </ul>
   @if (screenWidth<=520) {
